@@ -70,7 +70,7 @@ You can use these function to switch between sub state
 ```
 
 ## Activity Indicator
-<img src="https://raw.github.com/LeoMobileDeveloper/LHProgressHUD/master/ScreenShots/ac.png" width="200">
+<img src="https://raw.github.com/LeoMobileDeveloper/LHProgressHUD/master/ScreenShots/ai.png" width="200">
 
 
 ```
