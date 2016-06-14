@@ -466,7 +466,4 @@
         constraint.priority = priority;
     }
 }
--(void)dealloc{
-    NSLog(@"HUD is dealloced");
-}
 @end

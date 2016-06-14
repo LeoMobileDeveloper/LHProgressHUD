@@ -1,9 +1,9 @@
 {
   "name": "LHProgressHUD",
   "version": "0.1.0",
-  "summary": "A short description of LHProgressHUD.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/LHProgressHUD",
+  "summary": "A modern ProgressHUD with wonderful animation and built-in blur and gif support",
+  "description": "A modern ProgressHUD with wonderful animation and built-in blur and gif support for iOS 8.0+",
+  "homepage": "https://github.com/LeoMobileDeveloper/LHProgressHUD",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,7 +12,7 @@
     "Leo": "leomobiledeveloper@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/LHProgressHUD.git",
+    "git": "https://github.com/LeoMobileDeveloper/LHProgressHUD.git",
     "tag": "0.1.0"
   },
   "platforms": {
