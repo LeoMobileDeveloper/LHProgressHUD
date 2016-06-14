@@ -1,0 +1,22 @@
+{
+  "name": "LHProgressHUD",
+  "version": "0.1.0",
+  "summary": "A short description of LHProgressHUD.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/LHProgressHUD",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Leo": "leomobiledeveloper@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/LHProgressHUD.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "LHProgressHUD/Classes/**/*"
+}

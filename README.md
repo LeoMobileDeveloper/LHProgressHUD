@@ -1,9 +1,8 @@
 # LHProgressHUD
 
-[![CI Status](http://img.shields.io/travis/Leo/LHProgressHUD.svg?style=flat)](https://travis-ci.org/Leo/LHProgressHUD)
 [![Version](https://img.shields.io/cocoapods/v/LHProgressHUD.svg?style=flat)](http://cocoapods.org/pods/LHProgressHUD)
-[![License](https://img.shields.io/cocoapods/l/LHProgressHUD.svg?style=flat)](http://cocoapods.org/pods/LHProgressHUD)
-[![Platform](https://img.shields.io/cocoapods/p/LHProgressHUD.svg?style=flat)](http://cocoapods.org/pods/LHProgressHUD)
+
+## GIf
 
 ## Example
 
@@ -11,6 +10,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+iOS 8+
 ## Installation
 
 LHProgressHUD is available through [CocoaPods](http://cocoapods.org). To install

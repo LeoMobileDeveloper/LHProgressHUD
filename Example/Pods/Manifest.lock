@@ -1,0 +1,16 @@
+PODS:
+  - LHProgressHUD (0.1.0)
+
+DEPENDENCIES:
+  - LHProgressHUD (from `../`)
+
+EXTERNAL SOURCES:
+  LHProgressHUD:
+    :path: ../
+
+SPEC CHECKSUMS:
+  LHProgressHUD: 99f0007b2b818bf24fd74d26bf12c26c7cb0f21b
+
+PODFILE CHECKSUM: 63819ec2b2e7560c049be393e06136e95d92413e
+
+COCOAPODS: 1.0.0
