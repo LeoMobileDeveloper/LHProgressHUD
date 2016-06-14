@@ -23,7 +23,7 @@ A modern ProgressHUD with wonderful animation and built-in blur and gif support 
 
   s.homepage         = 'https://github.com/LeoMobileDeveloper/LHProgressHUD'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Leo' => 'leomobiledeveloper@gmail.com' }
+  s.author           = { "LeoMobileDeveloper" => "leomobiledeveloper@gmail.com" }
   s.source           = { :git => 'https://github.com/LeoMobileDeveloper/LHProgressHUD.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
