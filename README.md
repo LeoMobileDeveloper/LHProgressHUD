@@ -4,6 +4,8 @@
 
 ## GIf
 
+<img src="https://raw.github.com/LeoMobileDeveloper/LHProgressHUD/master/ScreenShots/main.gif" width="200">
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
