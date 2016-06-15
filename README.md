@@ -1,5 +1,5 @@
 # LHProgressHUD
-[![License: MIT](https://img.shields.io/cocoapods/l/LHProgressHUD.svg?style=flat)](http://opensource.org/licenses/MIT)    [![Version](https://img.shields.io/cocoapods/v/LHProgressHUD.svg?style=flat)](http://cocoapods.org/pods/LHProgressHUD)
+[![Build Status](https://travis-ci.org/LeoMobileDeveloper/LHProgressHUD.svg?branch=master)](https://travis-ci.org/LeoMobileDeveloper/LHProgressHUD)[![License: MIT](https://img.shields.io/cocoapods/l/LHProgressHUD.svg?style=flat)](http://opensource.org/licenses/MIT)    [![Version](https://img.shields.io/cocoapods/v/LHProgressHUD.svg?style=flat)](http://cocoapods.org/pods/LHProgressHUD)
 
 ## GIf
 
