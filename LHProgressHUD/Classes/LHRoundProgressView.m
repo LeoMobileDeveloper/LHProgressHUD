@@ -21,12 +21,20 @@
 
 @end
 @implementation LHRoundProgressView
-
+-(void)transactionUpdate:(void(^)(void))block{
+    [CATransaction begin];
+    [CATransaction setValue:(id)kCFBooleanTrue
+                     forKey:kCATransactionDisableActions];
+    block();
+    [CATransaction commit];
+}
 -(void)setProgress:(CGFloat)progress{
     _progress = progress;
     _progress = MAX(0.0, _progress);
     _progress = MIN(1.0, _progress);
-    self.progressLayer.strokeEnd = progress;
+    [self transactionUpdate:^{
+        self.progressLayer.strokeEnd = progress;
+    }];
     self.progressLabel.text = [NSString stringWithFormat:@"%.2f%%",_progress * 100];
 }
 -(CGSize)intrinsicContentSize{

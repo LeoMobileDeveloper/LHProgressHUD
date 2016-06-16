@@ -84,7 +84,7 @@ typedef NS_ENUM(NSInteger,LHPRogressHUDSubMode){
 
 @property (assign,nonatomic)CGFloat xOffset;
 
-@property (assign,nonatomic)BOOL square;
+@property (assign,nonatomic)BOOL persistSizeWhenSubModeChange;
 
 //Gif related
 @property (strong,nonatomic)LHGifImageView * gifImageView;

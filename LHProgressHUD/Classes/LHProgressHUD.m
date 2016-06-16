@@ -11,8 +11,6 @@
 #import "LHRoundProgressView.h"
 
 #define  CORNER_RADIUS 8
-#define TOP_POSITION 40
-#define BOTTOM_POSITION 40
 #define LHOnManThread() [[NSThread currentThread] isMainThread]
 
 @interface LHProgressHUD ()
@@ -42,7 +40,7 @@
         _yOffset = 0.0;
         _progress = 0.0;
         _animateWhenSubModeChange = YES;
-        _square = YES;
+        _persistSizeWhenSubModeChange = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [view addSubview:self];
         [self commonInit];
@@ -86,32 +84,32 @@
 -(void)showInfoWithStatus:(NSString *)status animated:(BOOL)animated{
     LHOnManThread();
     if ([self.lhSpinner isKindOfClass:[LHAcvitityIndicator class]]) {
-        self.subMode = LHProgressHUDSubModeInfo;
-        self.textLabel.text = status;
-        [(LHAcvitityIndicator *)self.lhSpinner updateToInfo:self.animateWhenSubModeChange];
+        _subMode = LHProgressHUDSubModeInfo;
+        _textLabel.text = status;
+        [(LHAcvitityIndicator *)self.lhSpinner updateToInfo:animated];
     }
 }
 -(void)showSuccessWithStatus:(NSString *)status animated:(BOOL)animated{
     LHOnManThread();
-    self.mode = LHProgressHUDModeNormal;
-    self.subMode = LHProgressHUDSubModeSuccess;
-    self.textLabel.text = status;
-    [(LHAcvitityIndicator *)self.lhSpinner updateToSuccess:self.animateWhenSubModeChange];
+    _mode = LHProgressHUDModeNormal;
+    _subMode = LHProgressHUDSubModeSuccess;
+    _textLabel.text = status;
+    [(LHAcvitityIndicator *)self.lhSpinner updateToSuccess:animated];
 
 }
 
 -(void)showFailureWithStatus:(NSString *)status animated:(BOOL)animated{
     LHOnManThread();
-    self.mode = LHProgressHUDModeNormal;
-    self.subMode = LHProgressHUDSubModeFailure;
-    self.textLabel.text = status;
-    [(LHAcvitityIndicator *)self.lhSpinner updateToFail:self.animateWhenSubModeChange];
+    _mode = LHProgressHUDModeNormal;
+    _subMode = LHProgressHUDSubModeFailure;
+    _textLabel.text = status;
+    [(LHAcvitityIndicator *)self.lhSpinner updateToFail:animated];
 }
 
 -(void)resetWithStatus:(NSString *)status{
     LHOnManThread();
-    self.subMode = LHProgressHUDSubModeAnimating;
-    self.textLabel.text = status;
+    _subMode = LHProgressHUDSubModeAnimating;
+    _textLabel.text = status;
     [(LHAcvitityIndicator *)self.lhSpinner stopAnimate];
     [(LHAcvitityIndicator *)self.lhSpinner startAnimating];
 }
@@ -123,11 +121,6 @@
         _mode = mode;
         [self updateSpinner];
         [self setNeedsUpdateConstraints];
-        if (_mode == LHProgressHUDModeNormal || _mode == LHProgressHUDModeActivityIdenticator) {
-            _square = YES;
-        }else{
-            _square = NO;
-        }
     }
 }
 -(void)setProgress:(CGFloat)progress{
@@ -137,11 +130,6 @@
         LHRoundProgressView * pv = (LHRoundProgressView *)self.lhSpinner;
         pv.progress = _progress;
     }
-}
--(void)setSquare:(BOOL)square{
-    _square = square;
-    [self updateSpinner];
-    [self setNeedsUpdateConstraints];
 }
 -(void)setCustomView:(UIView *)customView{
     if (_customView != customView) {
@@ -357,16 +345,6 @@
                                                                                    views:NSDictionaryOfVariableBindings(_centerBackgroundView)]];
     [self applyPriority:999.0 toConstraints:sideConstraints];
     [self addConstraints:sideConstraints];
-    if (_square) {
-        NSLayoutConstraint * squareConstraint = [NSLayoutConstraint constraintWithItem:_centerBackgroundView
-                                                                             attribute:NSLayoutAttributeWidth
-                                                                             relatedBy:NSLayoutRelationEqual
-                                                                                toItem:_centerBackgroundView
-                                                                             attribute:NSLayoutAttributeHeight
-                                                                            multiplier:1.0
-                                                                              constant:0.0];
-        [self addConstraint:squareConstraint];
-    }
     if (self.lhSpinner) {
         [self setUpConstraintsWithSpinner];
     }else{

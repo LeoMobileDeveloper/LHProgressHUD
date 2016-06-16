@@ -72,6 +72,7 @@
 }
 -(void)showFail{
     LHProgressHUD * hud = [LHProgressHUD showFailureAddedToView:self.view];
+    hud.textLabel.text = @"用户名或密码错误@property (assign,nonatomic)BOOL persistSizeWhenSubModeChange;";
     [hud hideAfterDelay:1.0];
 }
 -(void)showInfo{
@@ -87,7 +88,7 @@
     LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
     hud.textLabel.text = @"Loading...";
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [hud showSuccessWithStatus:@"Success" animated:YES];
+        [hud showSuccessWithStatus:@"Loaded success" animated:NO];
         [hud hideAfterDelay:1.0 hiddenBlock:^{
             NSLog(@"HUD is hidden");
         }];

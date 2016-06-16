@@ -7,7 +7,7 @@
 //
 
 #import "LHAcvitityIndicator.h"
-#define SPINNER_SIZE 60
+#define SPINNER_SIZE 55
 
 @interface LHAcvitityIndicator ()
 
@@ -160,39 +160,66 @@
 }
 -(void)updateToSuccess:(BOOL)animated{
     _shouldStop = YES;
-    self.layerSecond.hidden = NO;
-    _layerSecond.path = [self successPath].CGPath;
     [self.layerFirst removeAllAnimations];
     [self.thridLayer removeAllAnimations];
-    self.layerFirst.strokeStart = 0.05;
-    self.layerFirst.strokeEnd = 1.00;
     if (animated) {
+        _layerSecond.path = [self successPath].CGPath;
+        self.layerSecond.hidden = NO;
+        self.layerFirst.strokeStart = 0.05;
+        self.layerFirst.strokeEnd = 1.00;
         [self animateSecondLayer];
+
+    }else{
+        [self transactionUpdate:^{
+            _layerSecond.path = [self successPath].CGPath;
+            self.layerSecond.hidden = NO;
+            self.layerFirst.strokeStart = 0.05;
+            self.layerFirst.strokeEnd = 1.00;
+            self.layerSecond.strokeEnd = 1.0;
+        }];
     }
 }
 
 -(void)updateToFail:(BOOL)animated{
-    self.layerSecond.hidden = NO;
     _shouldStop = YES;
-    _layerSecond.path = [self failurePath].CGPath;
     [self.thridLayer removeAllAnimations];
     [self.layerFirst removeAllAnimations];
-    self.layerFirst.strokeStart = 0.05;
-    self.layerFirst.strokeEnd = 1.00;
     if (animated) {
+        self.layerSecond.hidden = NO;
+        _layerSecond.path = [self failurePath].CGPath;
+        self.layerFirst.strokeStart = 0.05;
+        self.layerFirst.strokeEnd = 1.00;
         [self animateSecondLayer];
+    }else{
+        [self transactionUpdate:^{
+            self.layerSecond.hidden = NO;
+            _layerSecond.path = [self failurePath].CGPath;
+            self.layerFirst.strokeStart = 0.05;
+            self.layerFirst.strokeEnd = 1.00;
+            self.layerSecond.strokeEnd = 1.0;
+
+        }];
     }
 }
 -(void)updateToInfo:(BOOL)animated{
     _shouldStop = YES;
-    self.layerSecond.hidden = NO;
     [self.layerFirst removeAllAnimations];
-    _layerSecond.path = [self infoPath].CGPath;
     [self.thridLayer removeAllAnimations];
-    self.layerFirst.strokeStart = 0.05;
-    self.layerFirst.strokeEnd = 1.00;
     if (animated) {
+        self.layerSecond.hidden = NO;
+        _layerSecond.path = [self infoPath].CGPath;
+        self.layerFirst.strokeStart = 0.05;
+        self.layerFirst.strokeEnd = 1.00;
         [self animateSecondLayer];
+    }else{
+        [self transactionUpdate:^{
+            self.layerSecond.hidden = NO;
+            _layerSecond.path = [self infoPath].CGPath;
+            self.layerFirst.strokeStart = 0.05;
+            self.layerFirst.strokeEnd = 1.00;
+            self.layerSecond.strokeEnd = 1.0;
+            
+        }];
     }
 }
 #pragma mark - API
