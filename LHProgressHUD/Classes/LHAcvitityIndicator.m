@@ -162,19 +162,18 @@
     _shouldStop = YES;
     [self.layerFirst removeAllAnimations];
     [self.thridLayer removeAllAnimations];
+    [self transactionUpdate:^{
+        self.layerFirst.strokeStart = 0.05;
+        self.layerFirst.strokeEnd = 1.00;
+    }];
     if (animated) {
         _layerSecond.path = [self successPath].CGPath;
         self.layerSecond.hidden = NO;
-        self.layerFirst.strokeStart = 0.05;
-        self.layerFirst.strokeEnd = 1.00;
         [self animateSecondLayer];
-
     }else{
         [self transactionUpdate:^{
             _layerSecond.path = [self successPath].CGPath;
             self.layerSecond.hidden = NO;
-            self.layerFirst.strokeStart = 0.05;
-            self.layerFirst.strokeEnd = 1.00;
             self.layerSecond.strokeEnd = 1.0;
         }];
     }
@@ -184,18 +183,18 @@
     _shouldStop = YES;
     [self.thridLayer removeAllAnimations];
     [self.layerFirst removeAllAnimations];
+    [self transactionUpdate:^{
+        self.layerFirst.strokeStart = 0.05;
+        self.layerFirst.strokeEnd = 1.00;
+    }];
     if (animated) {
         self.layerSecond.hidden = NO;
         _layerSecond.path = [self failurePath].CGPath;
-        self.layerFirst.strokeStart = 0.05;
-        self.layerFirst.strokeEnd = 1.00;
         [self animateSecondLayer];
     }else{
         [self transactionUpdate:^{
             self.layerSecond.hidden = NO;
             _layerSecond.path = [self failurePath].CGPath;
-            self.layerFirst.strokeStart = 0.05;
-            self.layerFirst.strokeEnd = 1.00;
             self.layerSecond.strokeEnd = 1.0;
 
         }];
@@ -205,18 +204,18 @@
     _shouldStop = YES;
     [self.layerFirst removeAllAnimations];
     [self.thridLayer removeAllAnimations];
+    [self transactionUpdate:^{
+        self.layerFirst.strokeStart = 0.05;
+        self.layerFirst.strokeEnd = 1.00;
+    }];
     if (animated) {
         self.layerSecond.hidden = NO;
         _layerSecond.path = [self infoPath].CGPath;
-        self.layerFirst.strokeStart = 0.05;
-        self.layerFirst.strokeEnd = 1.00;
         [self animateSecondLayer];
     }else{
         [self transactionUpdate:^{
             self.layerSecond.hidden = NO;
             _layerSecond.path = [self infoPath].CGPath;
-            self.layerFirst.strokeStart = 0.05;
-            self.layerFirst.strokeEnd = 1.00;
             self.layerSecond.strokeEnd = 1.0;
             
         }];

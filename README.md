@@ -5,10 +5,6 @@
 
 <img src="https://raw.github.com/LeoMobileDeveloper/LHProgressHUD/master/ScreenShots/main.gif" width="200">
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Requirements
 
 * iOS 8+
@@ -30,9 +26,8 @@ If you have used [MBProgressHUD](https://github.com/jdg/MBProgressHUD) before,it
 Show HUD and add it as a subview,then hide it
 
 ```
-    LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
+    LHProgressHUD * hud = [LHProgressHUD showSuccessAddedToView:self.view animated:YES];
     hud.textLabel.text = @"Loading...";
-    [hud hideAfterDelay:1.0];
     [hud hideAfterDelay:1.0 hiddenBlock:^{
         NSLog(@"HUD is hidden");
     }];
@@ -62,10 +57,10 @@ You can use these function to switch between sub state
 
 
 ```
-    LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
-    hud.mode = LHProgressHUDModeTextOnly;
-    hud.textLabel.text = @"Loading...";
-    [hud hideAfterDelay:1.0];
+LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
+hud.mode = LHProgressHUDModeTextOnly;
+hud.textLabel.text = @"Loading...";
+[hud hideAfterDelay:1.0];
 ```
 
 ## Activity Indicator
@@ -73,9 +68,9 @@ You can use these function to switch between sub state
 
 
 ```
-    LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
-    hud.mode = LHProgressHUDModeActivityIdenticator;
-    [hud hideAfterDelay:1.0];
+LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
+hud.mode = LHProgressHUDModeActivityIdenticator;
+[hud hideAfterDelay:1.0];
 ```
 
 ## Full Screen blur
@@ -83,30 +78,35 @@ You can use these function to switch between sub state
 
 
 ```
-    LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
-    hud.textLabel.text = @"Loading...";
-    hud.spinnerColor = [UIColor whiteColor];
-    hud.infoColor = [UIColor orangeColor];
-    hud.backgroundView.blurStyle = LHBlurEffectStyleDark;
-    hud.centerBackgroundView.blurStyle = LHBlurEffectStyleNone;
-    hud.centerBackgroundView.backgroundColor = [UIColor clearColor];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [hud showSuccessWithStatus:@"Success" animated:YES];
-        [hud hideAfterDelay:1.0 hiddenBlock:^{
-            NSLog(@"HUD is hidden");
-        }];
-    });
+LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
+hud.textLabel.text = @"Loading...";
+hud.spinnerColor = [UIColor whiteColor];
+hud.infoColor = [UIColor orangeColor];
+hud.backgroundView.blurStyle = LHBlurEffectStyleDark;
+hud.centerBackgroundView.blurStyle = LHBlurEffectStyleNone;
+hud.centerBackgroundView.backgroundColor = [UIColor clearColor];
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [hud showSuccessWithStatus:@"Success" animated:YES];
+    [hud hideAfterDelay:1.0 hiddenBlock:^{
+        NSLog(@"HUD is hidden");
+    }];
+});
 ```
 ## GIf
 
 ```
-    LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
-    hud.mode = LHPRogressHUDModeGif;
-    hud.centerBackgroundView.blurStyle = LHBlurEffectStyleNone;
-    hud.centerBackgroundView.backgroundColor = [UIColor clearColor];
-    hud.gifImageView = [[LHGifImageView alloc] initWithGifImageName:@"gif"];
-    [hud hideAfterDelay:3.0];
+LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
+hud.mode = LHPRogressHUDModeGif;
+hud.centerBackgroundView.blurStyle = LHBlurEffectStyleNone;
+hud.centerBackgroundView.backgroundColor = [UIColor clearColor];
+hud.gifImageView = [[LHGifImageView alloc] initWithGifImageName:@"gif"];
+[hud hideAfterDelay:3.0];
 ```
+
+<font color="red" size=4>You can get more deail by running the Example project </font>
+##中文
+
+如果你懂中文，可以在我的博客上看到[中文文档](http://blog.csdn.net/hello_hwc/article/details/51649610)
 
 ## Author
 

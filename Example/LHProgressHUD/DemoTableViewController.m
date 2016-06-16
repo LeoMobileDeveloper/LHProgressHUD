@@ -65,18 +65,19 @@
     [hud hideAfterDelay:2.0];
 }
 -(void)showSuccess{
-    LHProgressHUD * hud = [LHProgressHUD showSuccessAddedToView:self.view];
+    LHProgressHUD * hud = [LHProgressHUD showSuccessAddedToView:self.view animated:YES];
     hud.spinnerColor = [UIColor whiteColor];
     hud.infoColor = [UIColor orangeColor];
     [hud hideAfterDelay:1.0];
 }
 -(void)showFail{
-    LHProgressHUD * hud = [LHProgressHUD showFailureAddedToView:self.view];
-    hud.textLabel.text = @"用户名或密码错误@property (assign,nonatomic)BOOL persistSizeWhenSubModeChange;";
+    LHProgressHUD * hud = [LHProgressHUD showFailureAddedToView:self.view animated:YES];
+    hud.textLabel.text = @"Some error";
     [hud hideAfterDelay:1.0];
 }
 -(void)showInfo{
-    LHProgressHUD * hud = [LHProgressHUD showInfoAddedToView:self.view];
+    LHProgressHUD * hud = [LHProgressHUD showInfoAddedToView:self.view animated:NO];
+    hud.textLabel.text = @"Disable draw animation";
     [hud hideAfterDelay:1.0];
 }
 -(void)showNormalWithText{
@@ -87,15 +88,15 @@
 -(void)NormalThenSuccess{
     LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
     hud.textLabel.text = @"Loading...";
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [hud showSuccessWithStatus:@"Loaded success" animated:NO];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.9 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [hud showSuccessWithStatus:@"Success haha" animated:YES];
         [hud hideAfterDelay:1.0 hiddenBlock:^{
             NSLog(@"HUD is hidden");
         }];
     });
 }
 -(void)fullBlur{
-    LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
+    LHProgressHUD * hud = [LHProgressHUD showAddedToView:[UIApplication sharedApplication].keyWindow];
     hud.textLabel.text = @"Loading...";
     hud.spinnerColor = [UIColor whiteColor];
     hud.infoColor = [UIColor orangeColor];

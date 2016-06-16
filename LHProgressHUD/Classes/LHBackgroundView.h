@@ -8,13 +8,28 @@
 
 #import <UIKit/UIKit.h>
  typedef NS_ENUM(NSInteger,LHBlurEffectStyle){
-    LHBlurEffectStyleNone,
-    LHBlurEffectStyleExtraLight,
+     /**
+      *  No blur
+      */
+     LHBlurEffectStyleNone,
+     /**
+      *  Same as UIEffectStyleExtraLight
+      */
+     LHBlurEffectStyleExtraLight,
+     /**
+      *  Same as UIEffectStyleLight
+      */
     LHBlurEffectStyleLight,
+     /**
+      *  Same as UIEffectStyleDark
+      */
     LHBlurEffectStyleDark
 };
 @interface LHBackgroundView : UIView
 
+/**
+ *  The blur style
+ */
 @property (assign,nonatomic)LHBlurEffectStyle  blurStyle;
 
 @end

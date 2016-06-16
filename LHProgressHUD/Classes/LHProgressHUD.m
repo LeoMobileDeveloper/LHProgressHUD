@@ -27,20 +27,19 @@
 
 @property (strong,nonatomic)UIView * rightSpaceView;
 
+
 @end
 
 @implementation LHProgressHUD
 
 #pragma mark - Init method
--(instancetype)initWithAttachedView:(UIView *)view mode:(LHProgressHUDMode)mode subMode:(LHPRogressHUDSubMode)subMode{
+-(instancetype)initWithAttachedView:(UIView *)view mode:(LHProgressHUDMode)mode subMode:(LHPRogressHUDSubMode)subMode animated:(BOOL)animated{
     if (self = [super initWithFrame:view.bounds]) {
         _mode = mode;
         _subMode = subMode;
         _xOffset = 0.0;
         _yOffset = 0.0;
         _progress = 0.0;
-        _animateWhenSubModeChange = YES;
-        _persistSizeWhenSubModeChange = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [view addSubview:self];
         [self commonInit];
@@ -48,11 +47,11 @@
         [self setNeedsUpdateConstraints];
         if (self.lhSpinner && [self.lhSpinner isKindOfClass:LHAcvitityIndicator.class]) {
             if (_subMode == LHProgressHUDSubModeInfo) {
-                [(LHAcvitityIndicator*)self.lhSpinner updateToInfo:self.animateWhenSubModeChange];
+                [(LHAcvitityIndicator*)self.lhSpinner updateToInfo:animated];
             }else if(_subMode == LHProgressHUDSubModeSuccess){
-                [(LHAcvitityIndicator*)self.lhSpinner updateToSuccess:self.animateWhenSubModeChange];
+                [(LHAcvitityIndicator*)self.lhSpinner updateToSuccess:animated];
             }else if (_subMode == LHProgressHUDSubModeFailure){
-                [(LHAcvitityIndicator*)self.lhSpinner updateToFail:self.animateWhenSubModeChange];
+                [(LHAcvitityIndicator*)self.lhSpinner updateToFail:animated];
             }else{
                 [(LHAcvitityIndicator*)self.lhSpinner startAnimating];
             }
@@ -63,22 +62,26 @@
 +(instancetype)showAddedToView:(UIView *)view{
     return [[self alloc] initWithAttachedView:view
                                          mode:LHProgressHUDModeNormal
-                                      subMode:LHProgressHUDSubModeAnimating];
+                                      subMode:LHProgressHUDSubModeAnimating
+                                     animated:YES];
 }
-+(instancetype)showInfoAddedToView:(UIView *)view{
++(instancetype)showInfoAddedToView:(UIView *)view animated:(BOOL)animated{
     return [[self alloc] initWithAttachedView:view
                                          mode:LHProgressHUDModeNormal
-                                      subMode:LHProgressHUDSubModeInfo];
+                                      subMode:LHProgressHUDSubModeInfo
+                                     animated:animated];
 }
-+(instancetype)showFailureAddedToView:(UIView *)view{
++(instancetype)showFailureAddedToView:(UIView *)view animated:(BOOL)animated{
     return [[self alloc] initWithAttachedView:view
                                          mode:LHProgressHUDModeNormal
-                                      subMode:LHProgressHUDSubModeFailure];
+                                      subMode:LHProgressHUDSubModeFailure
+                                     animated:animated];
 }
-+(instancetype)showSuccessAddedToView:(UIView *)view{
++(instancetype)showSuccessAddedToView:(UIView *)view animated:(BOOL)animated{
     return [[self alloc] initWithAttachedView:view
                                          mode:LHProgressHUDModeNormal
-                                      subMode:LHProgressHUDSubModeSuccess];
+                                      subMode:LHProgressHUDSubModeSuccess
+                                     animated:YES];
 }
 #pragma mark - SubMode switch
 -(void)showInfoWithStatus:(NSString *)status animated:(BOOL)animated{
@@ -95,7 +98,6 @@
     _subMode = LHProgressHUDSubModeSuccess;
     _textLabel.text = status;
     [(LHAcvitityIndicator *)self.lhSpinner updateToSuccess:animated];
-
 }
 
 -(void)showFailureWithStatus:(NSString *)status animated:(BOOL)animated{
@@ -115,7 +117,6 @@
 }
 
 #pragma mark - Set function of property
-
 -(void)setMode:(LHProgressHUDMode)mode{
     if (_mode != mode) {
         _mode = mode;
@@ -163,24 +164,6 @@
     _spinnerColor = spinnerColor;
     if ([self.lhSpinner isKindOfClass:[LHAcvitityIndicator class]]) {
         [(LHAcvitityIndicator *)self.lhSpinner setSpinnerColor:spinnerColor];
-    }
-}
--(void)setSubMode:(LHPRogressHUDSubMode)subMode{
-    if (self.mode != LHProgressHUDModeNormal) {
-        return;
-    }
-    if (_subMode != subMode) {
-        _subMode = subMode;
-        if (_subMode == LHProgressHUDSubModeInfo) {
-            [(LHAcvitityIndicator *)self.lhSpinner updateToInfo:self.animateWhenSubModeChange];
-        }else if(_subMode == LHProgressHUDSubModeFailure){
-            [(LHAcvitityIndicator *)self.lhSpinner updateToFail:self.animateWhenSubModeChange];
-        }else if(_subMode == LHProgressHUDSubModeSuccess){
-            [(LHAcvitityIndicator *)self.lhSpinner updateToSuccess:self.animateWhenSubModeChange];
-        }else{
-            [(LHAcvitityIndicator *)self.lhSpinner stopAnimate];
-            [(LHAcvitityIndicator *)self.lhSpinner startAnimating];
-        }
     }
 }
 #pragma mark - APIS

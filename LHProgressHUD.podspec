@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LHProgressHUD'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
 s.summary          = 'A modern ProgressHUD with wonderful animation and built-in blur and gif support'
 
 # This description is used to generate tags and improve search results.
