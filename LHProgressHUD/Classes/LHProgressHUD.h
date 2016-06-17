@@ -174,5 +174,15 @@ typedef NS_ENUM(NSInteger,LHPRogressHUDSubMode){
  */
 @property (strong,nonatomic)LHGifImageView * gifImageView;
 
+/**
+ *  Wheather to be square,in some case when text is short,using square will make animation smoth
+ */
+@property (assign,nonatomic)BOOL square;
+
+/**
+ *  When hud is large,for example,when text is very long ,the min space between hud and the superview margin
+ *  Default is 20
+ */
+@property (assign,nonatomic)CGFloat margin;
 
 @end

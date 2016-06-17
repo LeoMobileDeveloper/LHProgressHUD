@@ -7,7 +7,7 @@
 //
 
 #import "LHAcvitityIndicator.h"
-#define SPINNER_SIZE 55
+#define SPINNER_SIZE 50
 
 @interface LHAcvitityIndicator ()
 

@@ -27,6 +27,7 @@
 
 @property (strong,nonatomic)UIView * rightSpaceView;
 
+@property (assign,nonatomic)CGFloat centerMargin;
 
 @end
 
@@ -40,6 +41,9 @@
         _xOffset = 0.0;
         _yOffset = 0.0;
         _progress = 0.0;
+        _margin = 20.0;
+        _centerMargin = 16.0;
+        _square = NO;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [view addSubview:self];
         [self commonInit];
@@ -124,6 +128,12 @@
         [self setNeedsUpdateConstraints];
     }
 }
+-(void)setSquare:(BOOL)square{
+    if (_square != square) {
+        _square = square;
+        [self setNeedsUpdateConstraints];
+    }
+}
 -(void)setProgress:(CGFloat)progress{
     _progress = MAX(progress, 0.00);
     _progress = MIN(progress, 1.00);
@@ -164,6 +174,18 @@
     _spinnerColor = spinnerColor;
     if ([self.lhSpinner isKindOfClass:[LHAcvitityIndicator class]]) {
         [(LHAcvitityIndicator *)self.lhSpinner setSpinnerColor:spinnerColor];
+    }
+}
+-(void)setMargin:(CGFloat)margin{
+    if (_margin != margin) {
+        _margin = MAX(margin, 0.0);
+        [self setNeedsUpdateConstraints];
+    }
+}
+-(void)setCenterMargin:(CGFloat)centerMargin{
+    if (_centerMargin != centerMargin) {
+        _margin = MAX(_centerMargin, 0.0);
+        [self setNeedsUpdateConstraints];
     }
 }
 #pragma mark - APIS
@@ -317,16 +339,25 @@
     [self addConstraints:centerConstraints];
     
     NSMutableArray *sideConstraints = [NSMutableArray array];
-    [sideConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=20)-[_centerBackgroundView]-(>=20)-|"
+    [sideConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=margin)-[_centerBackgroundView]-(>=margin)-|"
                                                                                  options:0
-                                                                                 metrics:nil
+                                                                                 metrics:@{@"margin":@(_margin)}
                                                                                    views:NSDictionaryOfVariableBindings(_centerBackgroundView)]];
     
-    [sideConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=20)-[_centerBackgroundView]-(>=20)-|"
+    [sideConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=margin)-[_centerBackgroundView]-(>=margin)-|"
                                                                                  options:0
-                                                                                 metrics:nil
+                                                                                 metrics:@{@"margin": @(_margin)}
                                                                                    views:NSDictionaryOfVariableBindings(_centerBackgroundView)]];
     [self applyPriority:999.0 toConstraints:sideConstraints];
+    if (_square) {
+        [_centerBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:_centerBackgroundView
+                                                                          attribute:NSLayoutAttributeWidth
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:_centerBackgroundView
+                                                                          attribute:NSLayoutAttributeHeight
+                                                                         multiplier:1.0
+                                                                           constant:0.0]];
+    }
     [self addConstraints:sideConstraints];
     if (self.lhSpinner) {
         [self setUpConstraintsWithSpinner];
@@ -339,6 +370,7 @@
 }
 -(void)setUpConstraintsForSpacer{
     NSMutableArray * spacerConstraints = [NSMutableArray new];
+    NSDictionary * matricsDic = @{@"margin":@(_centerMargin)};
     [spacerConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_topSpaceView]-0-|"
                                                                                    options:0
                                                                                    metrics:nil
@@ -347,13 +379,13 @@
                                                                                    options:0
                                                                                    metrics:nil
                                                                                      views:NSDictionaryOfVariableBindings(_bottomSpaceView)]];
-    [spacerConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_topSpaceView(==20)]"
+    [spacerConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_topSpaceView(==margin)]"
                                                                                    options:0
-                                                                                   metrics:nil
+                                                                                   metrics:matricsDic
                                                                                      views:NSDictionaryOfVariableBindings(_topSpaceView)]];
-    [spacerConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_bottomSpaceView(==20)]-0-|"
+    [spacerConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_bottomSpaceView(==margin)]-0-|"
                                                                                    options:0
-                                                                                   metrics:nil
+                                                                                   metrics:matricsDic
                                                                                      views:NSDictionaryOfVariableBindings(_bottomSpaceView)]];
     [spacerConstraints addObject:[NSLayoutConstraint constraintWithItem:_topSpaceView
                                                               attribute:NSLayoutAttributeHeight
@@ -368,15 +400,16 @@
     if (_lhSpinner == nil) {
         return;
     }
+    NSDictionary * matricsDic = @{@"margin":@(_centerMargin)};
     NSMutableArray * centerInsideConstraints = [NSMutableArray new];
-    [centerInsideConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=20)-[_lhSpinner]-(>=20)-|"
+    [centerInsideConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=margin)-[_lhSpinner]-(>=margin)-|"
                                                                                     options:0
-                                                                                    metrics:nil
+                                                                                    metrics:matricsDic
                                                                                       views:NSDictionaryOfVariableBindings(_lhSpinner)]];
     
-    [centerInsideConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(==20)-[_textLabel]-(==20)-|"
+    [centerInsideConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(==margin)-[_textLabel]-(==margin)-|"
                                                                                          options:0
-                                                                                         metrics:nil
+                                                                                         metrics:matricsDic
                                                                                            views:NSDictionaryOfVariableBindings(_textLabel)]];
     
     [centerInsideConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_topSpaceView]-0-[_lhSpinner]-0-[_textLabel]-0-[_bottomSpaceView]"
@@ -404,10 +437,11 @@
 }
 
 -(void)setupConstraintsWithoutSpinner{
+    NSDictionary * matricsDic = @{@"margin":@(_centerMargin)};
     NSMutableArray * labelConstraints = [NSMutableArray new];
-    [labelConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(==20)-[_textLabel]-(==20)-|"
+    [labelConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(==margin)-[_textLabel]-(==margin)-|"
                                                                                   options:0
-                                                                                  metrics:nil
+                                                                                  metrics:matricsDic
                                                                                     views:NSDictionaryOfVariableBindings(_textLabel)]];
     [labelConstraints addObject:[NSLayoutConstraint constraintWithItem:_textLabel
                                                              attribute:NSLayoutAttributeCenterX

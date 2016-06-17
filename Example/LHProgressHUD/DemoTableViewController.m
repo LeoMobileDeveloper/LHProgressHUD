@@ -87,9 +87,10 @@
 }
 -(void)NormalThenSuccess{
     LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
+    hud.square = YES;
     hud.textLabel.text = @"Loading...";
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.9 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [hud showSuccessWithStatus:@"Success haha" animated:YES];
+        [hud showSuccessWithStatus:@"Success" animated:YES];
         [hud hideAfterDelay:1.0 hiddenBlock:^{
             NSLog(@"HUD is hidden");
         }];

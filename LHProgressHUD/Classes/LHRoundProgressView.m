@@ -7,7 +7,7 @@
 //
 
 #import "LHRoundProgressView.h"
-#define SPINNER_SIZE 60
+#define SPINNER_SIZE 50
 
 @interface LHRoundProgressView (){
     CGFloat _padding;
