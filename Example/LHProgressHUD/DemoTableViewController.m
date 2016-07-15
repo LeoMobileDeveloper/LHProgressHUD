@@ -48,7 +48,6 @@
              @[@"UIActivityIndicator",@"UIActivityIndicator with text"],
              @[@"Pure Text",@"Very long text"],
              @[@"Show gif"],
-             @[@"CustomView",@"Progress",],
              ];
 }
 -(NSArray *)selectors{
@@ -57,7 +56,6 @@
              @[@"activityIndicator",@"activityIndicatorWithText"],
              @[@"prueText",@"longText"],
              @[@"showGif"],
-             @[@"customView",@"progressView",],
              ];
 }
 -(void)showNormal{
@@ -150,34 +148,12 @@
     hud.customView = customView;
     [hud hideAfterDelay:1.0];
 }
--(void)progressView{
-    self.progress = 0.00;
-    LHProgressHUD * hud = [LHProgressHUD showAddedToView:self.view];
-    hud.mode = LHProgressHUDModeProgress;
-    hud.textLabel.text = @"Downloading...";
-    self.hud = hud;
-    self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
-                                                          target:self
-                                                        selector:@selector(updateProgress)
-                                                        userInfo:nil
-                                                         repeats:YES];
-}
--(void)updateProgress{
-    self.progress += 0.01;
-    self.hud.progress = self.progress;
-    if (self.progress >= 1.00) {
-        [self.progressTimer invalidate];
-        self.progressTimer = nil;
-        [self.hud showSuccessWithStatus:@"Success" animated:YES];
-        [self.hud hideAfterDelay:1.0];
-    }
-}
 #pragma mark - Tableview delegate and datasource
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return CGFLOAT_MIN;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

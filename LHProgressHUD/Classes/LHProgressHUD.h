@@ -15,7 +15,6 @@ typedef NS_ENUM(NSInteger,LHProgressHUDMode){
     LHProgressHUDModeActivityIdenticator,
     LHProgressHUDModeCustomView,
     LHProgressHUDModeTextOnly,
-    LHProgressHUDModeProgress,
     LHPRogressHUDModeGif,
     
 };
@@ -149,10 +148,6 @@ typedef NS_ENUM(NSInteger,LHPRogressHUDSubMode){
  *  Use this to set customview,this is only useful when mode is LHProgressHUDModeCustomView
  */
 @property (strong,nonatomic)UIView * customView;
-/**
- *  Use this to set progress,this is only useful when mode is LHProgressHUDModeProgress
- */
-@property (assign,nonatomic)CGFloat progress;
 
 /**
  *  The block to execute when the hud is hiddded

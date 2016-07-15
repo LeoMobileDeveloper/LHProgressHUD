@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00D1A7394A7B0CEFF4B1362979CFA776 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		0514054253FC7DF8D9C7E1459A7DFBB1 /* LHRoundProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = B61449BBDDAF56650EBE006B7D28AA6D /* LHRoundProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0DAA3D7CEA1E76BB4EEDF40E291F38A6 /* LHAcvitityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = A928A94C70D8C2DBB868F874DF212E3B /* LHAcvitityIndicator.m */; };
 		211F425E702D94F95229D50054A49A15 /* LHGifImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 741E2E058B18314DE21634B834E5E53E /* LHGifImageView.m */; };
 		3848FCDA7B45B945356DC5FAF1AF9BBD /* LHProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C58DE3687EB47DD996171D0E2E7965 /* LHProgressHUD-dummy.m */; };
@@ -22,7 +21,6 @@
 		A3C68776A42806BB793B23B98F3F3F5F /* LHProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 885A38964356970F9E40C7DB50CE0D35 /* LHProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6F508B1C5AB6294E9AFDD6296C7FC36 /* Pods-LHProgressHUD_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0077074E10363E7FB8D0A4A9DC8FE966 /* Pods-LHProgressHUD_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A75BA96E824339DCB12BE18832581485 /* LHBackgroundView.h in Headers */ = {isa = PBXBuildFile; fileRef = BD6CBD9A42D7AA398B8843B313E2E348 /* LHBackgroundView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AB96FAD675342A9C67EAAA06E52897CA /* LHRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F11AC90C7ED0A8BB7ED49637A5C90A /* LHRoundProgressView.m */; };
 		B4CD8EA07CEDE121245BF12E4D44B261 /* UIImage+LHProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A41D2999CA4F81A4C05A752B400E9F1 /* UIImage+LHProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B898E22A2A2270EC0F5BD099F694C288 /* Pods-LHProgressHUD_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 237CEA8E286074883AC55E143E147BE4 /* Pods-LHProgressHUD_Example-dummy.m */; };
 		C7FFB954205B4E75B14FF2B8E8BE238C /* Pods-LHProgressHUD_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 97999A6A5B48F2C8BB85591324CFFF0F /* Pods-LHProgressHUD_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -69,7 +67,6 @@
 		A375596819632FADA3BF8E27A243C99F /* LHProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LHProgressHUD.xcconfig; sourceTree = "<group>"; };
 		A928A94C70D8C2DBB868F874DF212E3B /* LHAcvitityIndicator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LHAcvitityIndicator.m; sourceTree = "<group>"; };
 		B3B7660ADF5C169E04D939FF72B748FC /* LHProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LHProgressHUD-prefix.pch"; sourceTree = "<group>"; };
-		B61449BBDDAF56650EBE006B7D28AA6D /* LHRoundProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LHRoundProgressView.h; sourceTree = "<group>"; };
 		BD6CBD9A42D7AA398B8843B313E2E348 /* LHBackgroundView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LHBackgroundView.h; sourceTree = "<group>"; };
 		C02B8B8B035BCA5E13BD2BC5E8D6FD92 /* Pods-LHProgressHUD_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LHProgressHUD_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C0CEF58628F232EAB47E416AC387AB29 /* LHProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LHProgressHUD.m; sourceTree = "<group>"; };
@@ -81,7 +78,6 @@
 		E169BAD58ABF232DF3B2BF96720D379E /* Pods-LHProgressHUD_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LHProgressHUD_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E9BA9083C32749EFBE98B735E1F290D3 /* LHProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = LHProgressHUD.modulemap; sourceTree = "<group>"; };
 		EB86DD376BA9583EEFC368415A2AAA2E /* Pods-LHProgressHUD_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LHProgressHUD_Example-resources.sh"; sourceTree = "<group>"; };
-		F0F11AC90C7ED0A8BB7ED49637A5C90A /* LHRoundProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LHRoundProgressView.m; sourceTree = "<group>"; };
 		FC9465996A84EC40F6DEFBF772F53DFD /* Pods-LHProgressHUD_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LHProgressHUD_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		FDD8C023787B2013876B6DCD4FD48BD1 /* LHBackgroundView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LHBackgroundView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,8 +175,6 @@
 				741E2E058B18314DE21634B834E5E53E /* LHGifImageView.m */,
 				D7BAFE98DB399EA2936E74111749CA76 /* LHProgressHUD.h */,
 				C0CEF58628F232EAB47E416AC387AB29 /* LHProgressHUD.m */,
-				B61449BBDDAF56650EBE006B7D28AA6D /* LHRoundProgressView.h */,
-				F0F11AC90C7ED0A8BB7ED49637A5C90A /* LHRoundProgressView.m */,
 				1A41D2999CA4F81A4C05A752B400E9F1 /* UIImage+LHProgressHUD.h */,
 				382DFAE40DDCAC967386F9D2D85F3B32 /* UIImage+LHProgressHUD.m */,
 			);
@@ -267,7 +261,6 @@
 				CE5513B965E8A224CC68809FAFF9CC69 /* LHGifImageView.h in Headers */,
 				A3C68776A42806BB793B23B98F3F3F5F /* LHProgressHUD-umbrella.h in Headers */,
 				8E8D5E9E580F38EDD56DEB41ECBC3247 /* LHProgressHUD.h in Headers */,
-				0514054253FC7DF8D9C7E1459A7DFBB1 /* LHRoundProgressView.h in Headers */,
 				B4CD8EA07CEDE121245BF12E4D44B261 /* UIImage+LHProgressHUD.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,7 +382,6 @@
 				211F425E702D94F95229D50054A49A15 /* LHGifImageView.m in Sources */,
 				3848FCDA7B45B945356DC5FAF1AF9BBD /* LHProgressHUD-dummy.m in Sources */,
 				5D5E953967D6F0F7F339D4E102729E6B /* LHProgressHUD.m in Sources */,
-				AB96FAD675342A9C67EAAA06E52897CA /* LHRoundProgressView.m in Sources */,
 				4DC7590BE6E3EEB1EC6F5676E7116085 /* UIImage+LHProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

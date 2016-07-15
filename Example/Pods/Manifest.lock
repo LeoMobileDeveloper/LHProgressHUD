@@ -1,5 +1,5 @@
 PODS:
-  - LHProgressHUD (0.1.0)
+  - LHProgressHUD (0.1.1)
 
 DEPENDENCIES:
   - LHProgressHUD (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  LHProgressHUD: 2a131b93dc1b6b172b557faf87877c8565062e18
+  LHProgressHUD: 389e402ecf5dbc23073eec058697a5e060ac12b7
 
 PODFILE CHECKSUM: 63819ec2b2e7560c049be393e06136e95d92413e
 

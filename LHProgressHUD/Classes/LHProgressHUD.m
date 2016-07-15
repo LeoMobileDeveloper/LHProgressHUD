@@ -8,7 +8,6 @@
 
 #import "LHProgressHUD.h"
 #import "LHAcvitityIndicator.h"
-#import "LHRoundProgressView.h"
 
 #define  CORNER_RADIUS 8
 #define LHOnManThread() [[NSThread currentThread] isMainThread]
@@ -40,9 +39,8 @@
         _subMode = subMode;
         _xOffset = 0.0;
         _yOffset = 0.0;
-        _progress = 0.0;
         _margin = 20.0;
-        _centerMargin = 16.0;
+        _centerMargin = 20.0;
         _square = NO;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [view addSubview:self];
@@ -132,14 +130,6 @@
     if (_square != square) {
         _square = square;
         [self setNeedsUpdateConstraints];
-    }
-}
--(void)setProgress:(CGFloat)progress{
-    _progress = MAX(progress, 0.00);
-    _progress = MIN(progress, 1.00);
-    if (self.mode == LHProgressHUDModeProgress) {
-        LHRoundProgressView * pv = (LHRoundProgressView *)self.lhSpinner;
-        pv.progress = _progress;
     }
 }
 -(void)setCustomView:(UIView *)customView{
@@ -242,15 +232,6 @@
         [spinner startAnimating];
         self.lhSpinner = spinner;
         spinner.translatesAutoresizingMaskIntoConstraints = NO;
-        [_centerBackgroundView addSubview:self.lhSpinner];
-    }else if(self.mode == LHProgressHUDModeProgress){
-        if ([self.lhSpinner isKindOfClass:[LHRoundProgressView class]]) {
-            return;
-        }
-        [self.lhSpinner removeFromSuperview];
-        LHRoundProgressView * spinner = [[LHRoundProgressView alloc] init];
-        spinner.translatesAutoresizingMaskIntoConstraints = NO;
-        self.lhSpinner = spinner;
         [_centerBackgroundView addSubview:self.lhSpinner];
     }else if(self.mode == LHProgressHUDModeCustomView){
         [self.lhSpinner removeFromSuperview];
